@@ -168,9 +168,43 @@ export class EmailService {
             ${complianceAnalysis ? `
             <div style="background: #f0f8ff; padding: 15px; border-left: 4px solid #4285f4; margin: 15px 0;">
                 <h3>🔍 Crawl5 Compliance Analysis</h3>
-                <p><strong>Impact Level:</strong> <span style="color: ${complianceAnalysis.impact_level === 'CRITICAL' ? '#dc2626' : complianceAnalysis.impact_level === 'HIGH' ? '#ea580c' : '#ca8a04'}">${complianceAnalysis.impact_level}</span></p>
-                <p><strong>Summary:</strong> ${complianceAnalysis.change_summary}</p>
-                ${crawl5UpdatesNeeded ? `<p><strong>Crawl5 Updates Needed:</strong> ${crawl5UpdatesNeeded}</p>` : ''}
+                <p><strong>Impact Level:</strong> <span style="color: ${complianceAnalysis.impact_level === 'CRITICAL' ? '#dc2626' : complianceAnalysis.impact_level === 'HIGH' ? '#ea580c' : complianceAnalysis.impact_level === 'MEDIUM' ? '#ca8a04' : '#16a34a'}">${complianceAnalysis.impact_level}</span></p>
+                <p><strong>Summary:</strong> ${complianceAnalysis.summary || complianceAnalysis.change_summary}</p>
+                
+                ${complianceAnalysis.complianceImpact?.new_violations_to_detect?.length > 0 ? `
+                <div style="background: #fef3c7; padding: 10px; border-radius: 5px; margin: 10px 0;">
+                    <h4 style="margin: 0 0 5px 0; color: #92400e;">⚠️ New Violations to Detect:</h4>
+                    <ul style="margin: 5px 0;">
+                        ${complianceAnalysis.complianceImpact.new_violations_to_detect.map(v => `<li>${v}</li>`).join('')}
+                    </ul>
+                </div>
+                ` : ''}
+                
+                ${complianceAnalysis.recommendedActions?.immediate?.length > 0 ? `
+                <div style="background: #fee2e2; padding: 10px; border-radius: 5px; margin: 10px 0;">
+                    <h4 style="margin: 0 0 5px 0; color: #dc2626;">🚨 Immediate Actions Required:</h4>
+                    <ul style="margin: 5px 0;">
+                        ${complianceAnalysis.recommendedActions.immediate.map(a => `<li>${a}</li>`).join('')}
+                    </ul>
+                </div>
+                ` : ''}
+                
+                ${complianceAnalysis.businessImpact ? `
+                <div style="background: #f3f4f6; padding: 10px; border-radius: 5px; margin: 10px 0;">
+                    <h4 style="margin: 0 0 5px 0; color: #374151;">📊 Business Impact:</h4>
+                    <p><strong>Risk Level:</strong> ${complianceAnalysis.businessImpact.risk_level}</p>
+                    ${complianceAnalysis.businessImpact.affected_industries ? `<p><strong>Affected Industries:</strong> ${complianceAnalysis.businessImpact.affected_industries.join(', ')}</p>` : ''}
+                    ${complianceAnalysis.businessImpact.customer_action_required ? `<p><strong>Customer Action Required:</strong> Yes</p>` : ''}
+                </div>
+                ` : ''}
+                
+                ${complianceAnalysis.contentAnalysis ? `
+                <div style="background: #f0fdf4; padding: 10px; border-radius: 5px; margin: 10px 0;">
+                    <h4 style="margin: 0 0 5px 0; color: #166534;">📈 Content Analysis:</h4>
+                    ${complianceAnalysis.contentAnalysis.length_change ? `<p><strong>Content Length Change:</strong> ${complianceAnalysis.contentAnalysis.length_change > 0 ? '+' : ''}${complianceAnalysis.contentAnalysis.length_change} characters</p>` : ''}
+                    ${complianceAnalysis.contentAnalysis.critical_keywords_found ? `<p><strong>Critical Keywords Found:</strong> Yes</p>` : ''}
+                </div>
+                ` : ''}
             </div>
             ` : ''}
         </div>

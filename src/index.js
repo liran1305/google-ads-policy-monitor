@@ -111,11 +111,21 @@ class PolicyMonitor {
         if (changeResult.hasChanges && !changeResult.isNew) {
           console.log('🚨 Sending change alert...');
           
-          // Enhance change data with compliance insights
+          // Enhance change data with detailed compliance insights
           const enhancedChanges = {
             ...changeResult.changes,
-            complianceAnalysis,
-            crawl5UpdatesNeeded: complianceAnalysis?.crawl5_updates_needed?.length || 0
+            complianceAnalysis: complianceAnalysis,
+            crawl5UpdatesNeeded: complianceAnalysis?.crawl5_updates_needed?.length || 0,
+            // Add detailed compliance data from Crawl5
+            impactLevel: complianceAnalysis?.impact_level || 'UNKNOWN',
+            complianceSummary: complianceAnalysis?.summary || 'No analysis available',
+            affectedViolations: complianceAnalysis?.affectedViolations || [],
+            recommendedActions: complianceAnalysis?.recommendedActions || {},
+            businessImpact: complianceAnalysis?.businessImpact || {},
+            contentAnalysis: complianceAnalysis?.contentAnalysis || {},
+            // Include previous and current content for comparison
+            previousContent: changeResult.previousSnapshot?.content || '',
+            currentContent: currentData.content || ''
           };
 
           await this.emailService.sendPolicyChangeAlert(enhancedChanges);
