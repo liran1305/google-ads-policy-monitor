@@ -216,7 +216,6 @@ class PolicyMonitor {
     }
     
     console.log('✅ Cleanup completed');
-    process.exit(0);
   }
 
   delay(ms) {
@@ -244,7 +243,7 @@ async function main() {
     
   } catch (error) {
     console.error('❌ Policy monitoring failed:', error);
-    process.exit(1);
+    console.log('🔄 Continuing with cleanup...');
   } finally {
     await monitor.cleanup();
   }
