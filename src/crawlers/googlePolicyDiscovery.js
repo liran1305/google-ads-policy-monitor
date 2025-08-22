@@ -20,6 +20,25 @@ export class GooglePolicyDiscovery {
       ]
     };
 
+    // For Docker environments, set explicit executable path
+    if (process.env.NODE_ENV === 'production' || process.env.RENDER) {
+      const fs = await import('fs');
+      const possiblePaths = [
+        '/home/pwuser/.cache/ms-playwright/chromium_headless_shell-1187/chrome-linux/headless_shell',
+        '/home/pwuser/.cache/ms-playwright/chromium-1187/chrome-linux/chrome',
+        '/root/.cache/ms-playwright/chromium_headless_shell-1187/chrome-linux/headless_shell',
+        '/root/.cache/ms-playwright/chromium-1187/chrome-linux/chrome'
+      ];
+      
+      for (const path of possiblePaths) {
+        if (fs.existsSync && fs.existsSync(path)) {
+          launchOptions.executablePath = path;
+          console.log(`🎯 Using Chromium executable: ${path}`);
+          break;
+        }
+      }
+    }
+
     this.browser = await chromium.launch(launchOptions);
     this.page = await this.browser.newPage();
     

@@ -18,7 +18,7 @@ RUN npx playwright install --with-deps chromium
 
 # Copy browsers to non-root user's cache directory
 RUN mkdir -p /home/pwuser/.cache/ms-playwright \
-    && cp -r /root/.cache/ms-playwright/chromium-* /home/pwuser/.cache/ms-playwright/ \
+    && cp -r /root/.cache/ms-playwright/* /home/pwuser/.cache/ms-playwright/ \
     && chown -R pwuser:pwuser /home/pwuser/.cache/ms-playwright
 
 # Copy application code
