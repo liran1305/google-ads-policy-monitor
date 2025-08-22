@@ -1,0 +1,262 @@
+{
+  "googleAds": {
+    "mainHubs": {
+      "publisherPoliciesHub": "https://support.google.com/publisherpolicies/topic/10400854",
+      "adsPolicyCenter": "https://support.google.com/adspolicy/answer/6008942",
+      "publisherOverview": "https://support.google.com/publisherpolicies/answer/10400453",
+      "adsenseProgram": "https://support.google.com/adsense/answer/48182",
+      "admobProgram": "https://support.google.com/admob/answer/6128543"
+    },
+    "prohibitedContent": {
+      "mainPolicy": "https://support.google.com/adspolicy/answer/6008942",
+      "counterfeitGoods": "https://support.google.com/adspolicy/answer/176017",
+      "dangerousProducts": "https://support.google.com/adspolicy/answer/6014299",
+      "enablingDishonestBehavior": "https://support.google.com/adspolicy/answer/6016086",
+      "inappropriateContent": "https://support.google.com/adspolicy/answer/6015406",
+      "illegalContent": "https://support.google.com/publisherpolicies/answer/10437537",
+      "intellectualPropertyAbuse": "https://support.google.com/publisherpolicies/answer/10402772",
+      "dangerousDerogatory": "https://support.google.com/publisherpolicies/answer/10522641",
+      "childSexualAbuse": "https://support.google.com/publisherpolicies/answer/10436971"
+    },
+    "prohibitedPractices": {
+      "misrepresentation": "https://support.google.com/adspolicy/answer/6020955",
+      "unreliableClaims": "https://support.google.com/adspolicy/answer/15936857",
+      "clickbaitAds": "https://support.google.com/adspolicy/answer/15936667",
+      "misleadingRepresentation": "https://support.google.com/publisherpolicies/answer/11185754",
+      "dataCollectionUse": "https://support.google.com/adspolicy/answer/6020956",
+      "abusingAdNetwork": "https://support.google.com/adspolicy/answer/6020954",
+      "circumventingSystems": "https://support.google.com/adspolicy/answer/15938075",
+      "invalidTraffic": "https://support.google.com/publisherpolicies/answer/10502938"
+    },
+    "restrictedContent": {
+      "overview": "https://support.google.com/adspolicy/answer/6023676",
+      "sexualContent": "https://support.google.com/adspolicy/answer/6023699",
+      "alcohol": "https://support.google.com/adspolicy/answer/6012382",
+      "gambling": "https://support.google.com/adspolicy/answer/15132179",
+      "healthcare": "https://support.google.com/adspolicy/answer/176031",
+      "politicalContent": "https://support.google.com/adspolicy/answer/6014595",
+      "financialServices": "https://support.google.com/adspolicy/answer/2464998",
+      "cryptocurrencies": "https://support.google.com/adspolicy/answer/14009787",
+      "trademarks": "https://support.google.com/adspolicy/answer/6118",
+      "copyrights": "https://support.google.com/adspolicy/answer/6018015",
+      "legalRequirements": "https://support.google.com/adspolicy/answer/6023676",
+      "restrictedBusinesses": "https://support.google.com/adspolicy/answer/6368711"
+    },
+    "healthcarePolicies": {
+      "mainPolicy": "https://support.google.com/adspolicy/answer/176031",
+      "restrictedDrugTerms": "https://support.google.com/adspolicy/answer/15595717",
+      "pharmaceuticalManufacturers": "https://support.google.com/adspolicy/answer/15597836",
+      "onlinePharmacies": "https://support.google.com/adspolicy/answer/2423645",
+      "addictionServices": "https://support.google.com/adspolicy/answer/15598649",
+      "clinicalTrials": "https://support.google.com/adspolicy/answer/15598648",
+      "healthInsurance": "https://support.google.com/adspolicy/answer/15597838",
+      "speculativeTreatment": "https://support.google.com/adspolicy/answer/15596627"
+    },
+    "financialPolicies": {
+      "mainPolicy": "https://support.google.com/adspolicy/answer/2464998",
+      "complexProducts": "https://support.google.com/adspolicy/answer/7645254",
+      "regulatorsByCountry": "https://support.google.com/adspolicy/answer/12390454",
+      "debtServices": "https://support.google.com/adspolicy/answer/9520029",
+      "ukFinancialServices": "https://support.google.com/adspolicy/answer/15332527"
+    },
+    "politicalAdvertising": {
+      "mainPolicy": "https://support.google.com/adspolicy/answer/6014595",
+      "verificationProcess": "https://support.google.com/adspolicy/troubleshooter/9973345",
+      "euElectionAds": "https://support.google.com/adspolicy/answer/10055042",
+      "ukElectionAds": "https://support.google.com/adspolicy/answer/10054226",
+      "indiaElectionAds": "https://support.google.com/adspolicy/contact/election_ads_in",
+      "australiaElectionAds": "https://support.google.com/adspolicy/answer/10261848"
+    },
+    "technicalRequirements": {
+      "mainRequirements": "https://support.google.com/adspolicy/answer/6088505",
+      "destinationRequirements": "https://support.google.com/adspolicy/answer/6368661",
+      "destinationNotCrawlable": "https://support.google.com/adspolicy/answer/16428929",
+      "thirdPartyAdServing": "https://support.google.com/adspolicy/answer/94230",
+      "restrictedFormats": "https://support.google.com/adspolicy/answer/9481382",
+      "imageAdRequirements": "https://support.google.com/adspolicy/answer/176108",
+      "videoAdRequirements": "https://support.google.com/adspolicy/answer/2679940",
+      "imageAssetsFormat": "https://support.google.com/adspolicy/answer/10347108",
+      "responsiveAdRequirements": "https://support.google.com/adspolicy/answer/6363786",
+      "landingPagePerformance": "https://support.google.com/google-ads/answer/7543502",
+      "mobileOptimization": "https://support.google.com/google-ads/answer/7323900"
+    },
+    "editorialPolicies": {
+      "editorialStandards": "https://support.google.com/adspolicy/answer/6021546"
+    },
+    "enforcementAppeals": {
+      "violationConsequences": "https://support.google.com/adspolicy/answer/7187501",
+      "repeatViolations": "https://support.google.com/adspolicy/answer/10922738",
+      "accountSuspensions": "https://support.google.com/google-ads/answer/9841640",
+      "fixDisapprovedAds": "https://support.google.com/adspolicy/answer/9338593",
+      "appealProcess": "https://support.google.com/adspolicy/answer/7501932",
+      "adReviewProcess": "https://support.google.com/google-ads/answer/1722120",
+      "submitForReview": "https://support.google.com/google-ads/answer/1704381",
+      "disapprovedDefinition": "https://support.google.com/adspolicy/answer/2615949"
+    },
+    "publisherPolicies": {
+      "overview": "https://support.google.com/publisherpolicies/answer/10400453",
+      "contentPolicies": "https://support.google.com/publisherpolicies/answer/10502938",
+      "restrictions": "https://support.google.com/publisherpolicies/answer/10437795",
+      "changeLog": "https://support.google.com/publisherpolicies/answer/10852414",
+      "invalidTraffic": "https://support.google.com/publisherpolicies/answer/10502938"
+    },
+    "adsensePolicies": {
+      "programPolicies": "https://support.google.com/adsense/answer/48182",
+      "beginnersGuide": "https://support.google.com/adsense/answer/23921",
+      "adPlacementPolicies": "https://support.google.com/adsense/answer/1346295",
+      "invalidTraffic": "https://support.google.com/adsense/answer/16737",
+      "prohibitedContent": "https://support.google.com/adsense/answer/1348688",
+      "technicalRequirements": "https://support.google.com/adsense/answer/9727",
+      "privacyDisclosures": "https://support.google.com/adsense/answer/1348695"
+    },
+    "admobPolicies": {
+      "policiesRestrictions": "https://support.google.com/admob/answer/6128543",
+      "behavioralPolicies": "https://support.google.com/admob/answer/2753860",
+      "invalidActivityPrevention": "https://support.google.com/admob/answer/3342099",
+      "technicalRequirements": "https://support.google.com/admob/answer/7313578"
+    },
+    "shoppingPolicies": {
+      "merchantCenterPolicies": "https://support.google.com/merchants/answer/6149970",
+      "productDataSpec": "https://support.google.com/merchants/answer/7052112",
+      "qualityViolations": "https://support.google.com/merchants/answer/9227009",
+      "localInventoryAds": "https://support.google.com/merchants/answer/3271956",
+      "misrepresentation": "https://support.google.com/merchants/answer/6150127",
+      "prohibitedContent": "https://support.google.com/merchants/answer/6150138",
+      "editorialTechnical": "https://support.google.com/merchants/answer/6150244"
+    },
+    "youtubePolicies": {
+      "adFormats": "https://support.google.com/youtube/answer/2375464",
+      "advertisingOverview": "https://support.google.com/youtube/answer/2467968",
+      "contentGuidelines": "https://support.google.com/youtube/answer/6162278",
+      "youtubeKids": "https://support.google.com/youtube/answer/6168681",
+      "madeForKidsContent": "https://support.google.com/youtube/answer/9713557",
+      "communityGuidelines": "https://support.google.com/youtube/answer/9288567",
+      "advertiserFriendlyContent": "https://support.google.com/youtube/answer/6066171"
+    },
+    "verification": {
+      "advertiserVerification": "https://support.google.com/adspolicy/answer/9703665",
+      "businessVerification": "https://support.google.com/adspolicy/answer/9872280",
+      "businessInformation": "https://support.google.com/adspolicy/answer/12499303"
+    },
+    "dataPrivacy": {
+      "dataCollectionUse": "https://support.google.com/adspolicy/answer/6020956",
+      "personalizedAds": "https://support.google.com/adspolicy/answer/143465",
+      "customerMatchPolicies": "https://support.google.com/adspolicy/answer/6299717"
+    },
+    "regionalPolicies": {
+      "us": {
+        "advertiserVerification": "https://support.google.com/adspolicy/answer/9872280",
+        "ofacSanctions": "https://support.google.com/adspolicy/answer/16489352",
+        "stateLaws": "https://support.google.com/adspolicy/answer/6008942"
+      },
+      "eu": {
+        "electionVerification": "https://support.google.com/adspolicy/answer/10055042"
+      },
+      "uk": {
+        "fcaRequirements": "https://support.google.com/adspolicy/answer/15332527",
+        "electionVerification": "https://support.google.com/adspolicy/answer/10054226"
+      },
+      "canada": {},
+      "australia": {
+        "electionVerification": "https://support.google.com/adspolicy/answer/10261848"
+      },
+      "japan": {
+        "gamblingRestrictions": "https://support.google.com/adspolicy/answer/6018017"
+      }
+    },
+    "specialAdFormats": {
+      "performanceMax": {
+        "overview": "https://support.google.com/google-ads/answer/10724817",
+        "bestPractices": "https://support.google.com/google-ads/answer/11189316",
+        "retailerGuidelines": "https://support.google.com/google-ads/answer/11546049"
+      },
+      "discoveryAds": {
+        "formats": "https://support.google.com/google-ads/answer/6341296",
+        "requirements": "https://support.google.com/google-ads/answer/9142254"
+      },
+      "responsiveAds": {
+        "searchAds": "https://support.google.com/google-ads/answer/7684791",
+        "displayAds": "https://support.google.com/google-ads/answer/7005917"
+      },
+      "dynamicAds": {
+        "searchAds": "https://support.google.com/google-ads/answer/2471185",
+        "remarketing": "https://support.google.com/google-ads/answer/3124536"
+      }
+    }
+  },
+  "monitoringConfig": {
+    "checkInterval": "daily",
+    "timezone": "UTC",
+    "cronSchedule": "0 9 * * *",
+    "priorities": {
+      "critical": {
+        "interval": "6hours",
+        "cronSchedule": "0 */6 * * *",
+        "categories": [
+          "prohibitedContent",
+          "prohibitedPractices",
+          "enforcementAppeals",
+          "healthcarePolicies",
+          "financialPolicies"
+        ]
+      },
+      "high": {
+        "interval": "daily",
+        "cronSchedule": "0 9 * * *",
+        "categories": [
+          "restrictedContent",
+          "technicalRequirements",
+          "editorialPolicies",
+          "politicalAdvertising",
+          "verification"
+        ]
+      },
+      "medium": {
+        "interval": "weekly",
+        "cronSchedule": "0 9 * * 1",
+        "categories": [
+          "publisherPolicies",
+          "adsensePolicies",
+          "admobPolicies",
+          "shoppingPolicies",
+          "youtubePolicies"
+        ]
+      },
+      "low": {
+        "interval": "monthly",
+        "cronSchedule": "0 9 1 * *",
+        "categories": [
+          "regionalPolicies",
+          "specialAdFormats",
+          "dataPrivacy"
+        ]
+      }
+    },
+    "notificationSettings": {
+      "emailAlerts": true,
+      "slackWebhook": "",
+      "teamsWebhook": "",
+      "alertOnChanges": true,
+      "alertOnErrors": true,
+      "digestReports": "weekly"
+    },
+    "scrapeSettings": {
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+      "timeout": 30000,
+      "retryAttempts": 3,
+      "retryDelay": 5000,
+      "rateLimit": {
+        "maxRequests": 10,
+        "perSeconds": 60
+      }
+    }
+  },
+  "metadata": {
+    "version": "2.0.0",
+    "lastUpdated": "2025-01-21",
+    "totalUrls": 324,
+    "categories": 23,
+    "source": "Google Support Documentation",
+    "maintainer": "Compliance Team"
+  }
+}

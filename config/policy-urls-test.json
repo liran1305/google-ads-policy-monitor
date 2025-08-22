@@ -1,0 +1,13 @@
+{
+  "googleAds": {
+    "prohibited_content": {
+      "counterfeit_goods": "https://support.google.com/adspolicy/answer/176017",
+      "dangerous_products": "https://support.google.com/adspolicy/answer/6014299",
+      "inappropriate_content": "https://support.google.com/adspolicy/answer/6015406"
+    },
+    "prohibited_practices": {
+      "enabling_dishonest_behavior": "https://support.google.com/adspolicy/answer/6016086",
+      "misrepresentation": "https://support.google.com/adspolicy/answer/6020955"
+    }
+  }
+}
