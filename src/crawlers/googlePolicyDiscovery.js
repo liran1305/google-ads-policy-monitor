@@ -20,21 +20,6 @@ export class GooglePolicyDiscovery {
       ]
     };
 
-    // For production environments, try to use the correct executable path
-    if (process.env.RENDER || process.env.NODE_ENV === 'production') {
-      // Playwright on Render may need explicit executable path
-      const executablePath = process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH || 
-                           '/opt/render/.cache/ms-playwright/chromium-1187/chrome-linux/chrome';
-      try {
-        const fs = await import('fs');
-        if (fs.existsSync && fs.existsSync(executablePath)) {
-          launchOptions.executablePath = executablePath;
-        }
-      } catch (e) {
-        // Continue without explicit path
-      }
-    }
-
     this.browser = await chromium.launch(launchOptions);
     this.page = await this.browser.newPage();
     
