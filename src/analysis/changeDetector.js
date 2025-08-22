@@ -25,35 +25,45 @@ export class ChangeDetector {
 
   async loadPreviousSnapshot(url) {
     if (this.useMongoDb) {
-      return await this.mongoStorage.loadPreviousSnapshot(url);
-    } else {
-      const snapshotPath = this.getSnapshotPath(url);
-      
       try {
-        const data = await fs.readFile(snapshotPath, 'utf8');
-        return JSON.parse(data);
+        return await this.mongoStorage.loadPreviousSnapshot(url);
       } catch (error) {
-        // No previous snapshot exists
-        return null;
+        console.warn('⚠️ MongoDB load failed, falling back to file storage');
+        this.useMongoDb = false;
       }
+    }
+    
+    const snapshotPath = this.getSnapshotPath(url);
+    
+    try {
+      const data = await fs.readFile(snapshotPath, 'utf8');
+      return JSON.parse(data);
+    } catch (error) {
+      // No previous snapshot exists
+      return null;
     }
   }
 
   async saveSnapshot(policyData) {
     if (this.useMongoDb) {
-      return await this.mongoStorage.saveSnapshot(policyData);
-    } else {
-      await this.ensureSnapshotsDir();
-      const snapshotPath = this.getSnapshotPath(policyData.url);
-      
-      const snapshot = {
-        ...policyData,
-        snapshotDate: new Date().toISOString()
-      };
-
-      await fs.writeFile(snapshotPath, JSON.stringify(snapshot, null, 2));
-      console.log(`💾 Saved snapshot for: ${policyData.url}`);
+      try {
+        return await this.mongoStorage.saveSnapshot(policyData);
+      } catch (error) {
+        console.warn('⚠️ MongoDB save failed, falling back to file storage');
+        this.useMongoDb = false;
+      }
     }
+    
+    await this.ensureSnapshotsDir();
+    const snapshotPath = this.getSnapshotPath(policyData.url);
+    
+    const snapshot = {
+      ...policyData,
+      snapshotDate: new Date().toISOString()
+    };
+
+    await fs.writeFile(snapshotPath, JSON.stringify(snapshot, null, 2));
+    console.log(`💾 Saved snapshot for: ${policyData.url}`);
   }
 
   async detectChanges(currentData) {

@@ -13,8 +13,14 @@ export class MongoStorage {
 
   async connect() {
     try {
-      const mongoUrl = process.env.MONGODB_URL || 'mongodb://localhost:27017';
+      const mongoUrl = process.env.MONGODB_URL;
       const dbName = process.env.MONGODB_DB_NAME || 'policy_monitor';
+      
+      if (!mongoUrl) {
+        console.warn('⚠️ MONGODB_URL not provided, MongoDB features disabled');
+        this.isConnected = false;
+        return false;
+      }
       
       this.client = new MongoClient(mongoUrl);
       await this.client.connect();
@@ -26,11 +32,13 @@ export class MongoStorage {
       
       // Create index on URL for faster queries
       await this.collection.createIndex({ url: 1 }, { unique: true });
+      return true;
       
     } catch (error) {
       console.error('❌ MongoDB connection failed:', error);
+      console.warn('⚠️ Falling back to file-based storage');
       this.isConnected = false;
-      throw error;
+      return false;
     }
   }
 
