@@ -8,7 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "monitor": "node src/index.js",
     "first-run": "node scripts/first-run.js",
-    "postinstall": "npx playwright install chromium || echo 'Playwright browser installation failed, continuing...'"
+    "postinstall": "npx playwright install --with-deps chromium || echo 'Playwright browser installation failed, continuing...'"
   },
   "keywords": [
     "google-ads",
