@@ -11,6 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+    environment: Monitoring
     
     steps:
     - name: Checkout repository
