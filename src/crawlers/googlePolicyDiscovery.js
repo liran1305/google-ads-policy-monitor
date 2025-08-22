@@ -281,11 +281,31 @@ export class GooglePolicyDiscovery {
     }
   }
 
+  normalizeContent(content) {
+    return content
+      // Remove all whitespace variations and normalize to single spaces
+      .replace(/\s+/g, ' ')
+      // Remove common dynamic elements that change frequently
+      .replace(/Skip to main content\s*/gi, '')
+      .replace(/Give feedback about this article\s*/gi, '')
+      .replace(/Choose a section to give fee[\s\S]*?$/gi, '')
+      // Remove YouTube captions references that change
+      .replace(/For subtitles in your language[\s\S]*?choose your language\./gi, '')
+      // Remove common footer elements
+      .replace(/Learn more about the commonly used policy terms[\s\S]*?glossary\./gi, '')
+      // Trim and normalize
+      .trim()
+      .toLowerCase();
+  }
+
   generateContentHash(content) {
+    // Normalize content before hashing to avoid false positives
+    const normalizedContent = this.normalizeContent(content);
+    
     // Simple hash function for content comparison
     let hash = 0;
-    for (let i = 0; i < content.length; i++) {
-      const char = content.charCodeAt(i);
+    for (let i = 0; i < normalizedContent.length; i++) {
+      const char = normalizedContent.charCodeAt(i);
       hash = ((hash << 5) - hash) + char;
       hash = hash & hash; // Convert to 32-bit integer
     }
