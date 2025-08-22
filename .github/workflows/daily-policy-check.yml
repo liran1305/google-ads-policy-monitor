@@ -26,11 +26,14 @@ jobs:
     - name: Install dependencies
       run: npm ci
       
-    - name: Start ComplyAI Backend (if available)
+    - name: Install Playwright browsers
+      run: npx playwright install chromium
+      
+    - name: Start Crawl5 Backend (if available)
       run: |
-        # Try to start ComplyAI backend in background if available
-        if [ -d "../ComplyAI" ]; then
-          cd ../ComplyAI && npm start &
+        # Try to start Crawl5 backend in background if available
+        if [ -d "../Crawl5" ]; then
+          cd ../Crawl5 && npm start &
           sleep 10
         fi
       continue-on-error: true
