@@ -1,4 +1,4 @@
-import puppeteer from 'puppeteer';
+import { chromium } from 'playwright';
 import crypto from 'crypto';
 import { promises as fs } from 'fs';
 import path from 'path';
@@ -11,21 +11,27 @@ export class GooglePolicyDiscovery {
   }
 
   async initialize() {
-    this.browser = await puppeteer.launch({
+    const launchOptions = {
       headless: true,
-      args: ['--no-sandbox', '--disable-setuid-sandbox']
-    });
+      args: [
+        '--no-sandbox',
+        '--disable-setuid-sandbox',
+        '--disable-dev-shm-usage'
+      ]
+    };
+
+    this.browser = await chromium.launch(launchOptions);
     this.page = await this.browser.newPage();
     
     // Set user agent to avoid blocking
-    await this.page.setUserAgent('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36');
+    await this.page.setUserAgent('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36');
   }
 
   async discoverPolicyUrls(hubUrl) {
     console.log(`🔍 Discovering policy URLs from: ${hubUrl}`);
     
     try {
-      await this.page.goto(hubUrl, { waitUntil: 'networkidle2' });
+      await this.page.goto(hubUrl, { waitUntil: 'networkidle' });
       const content = await this.page.content();
       const $ = cheerio.load(content);
       
@@ -75,7 +81,7 @@ export class GooglePolicyDiscovery {
     console.log(`📄 Extracting content from: ${url}`);
     
     try {
-      await this.page.goto(url, { waitUntil: 'networkidle2' });
+      await this.page.goto(url, { waitUntil: 'networkidle' });
       const content = await this.page.content();
       const $ = cheerio.load(content);
       
