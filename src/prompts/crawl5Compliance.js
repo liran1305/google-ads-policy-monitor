@@ -70,37 +70,48 @@ For each change identified, specify:
 
 ### OUTPUT FORMAT:
 
-Return analysis as JSON:
+Return analysis as JSON with SPECIFIC, ACTIONABLE details:
 
 {
   "policy_changes_detected": true/false,
-  "change_summary": "Brief overview of what changed",
+  "change_summary": "Brief overview of what changed with specific policy sections mentioned",
   "impact_level": "LOW|MEDIUM|HIGH|CRITICAL",
   "crawl5_updates_needed": [
     {
       "category": "NEW_VIOLATION_TYPE|ENFORCEMENT_CHANGE|DETECTION_PATTERN|INDUSTRY_SPECIFIC",
-      "title": "Specific change title",
-      "description": "What changed and why it matters",
-      "scanning_impact": "How this affects Crawl5 scanning logic",
-      "implementation_required": "What needs to be added to Crawl5",
-      "html_patterns": ["new CSS selectors or HTML patterns to detect"],
-      "javascript_patterns": ["new JS behaviors to flag"],
-      "affected_industries": ["health", "finance", "ecommerce", "software"],
-      "enforcement_level": "WARNING|SUSPENSION|INSTANT_SUSPENSION"
+      "title": "Specific change title (e.g., 'New cryptocurrency disclosure requirements')",
+      "description": "Detailed description of what changed and why it matters for compliance",
+      "scanning_impact": "Specific impact on Crawl5 scanning logic with technical details",
+      "implementation_required": "Exact implementation steps needed in Crawl5 scanning engine",
+      "html_patterns": ["Specific CSS selectors like '.crypto-disclaimer', 'input[type=\"hidden\"][name=\"subscription\"]'"],
+      "javascript_patterns": ["Specific JS patterns like 'document.cookie', 'window.location.replace', 'setInterval'"],
+      "affected_industries": ["health", "finance", "ecommerce", "software", "saas", "agencies"],
+      "enforcement_level": "WARNING|SUSPENSION|INSTANT_SUSPENSION",
+      "policy_section": "Specific Google Ads policy section name that changed"
     }
   ],
   "compliance_scanning_priorities": [
     {
-      "violation_type": "Specific violation category",
-      "detection_method": "How Crawl5 should scan for this",
+      "violation_type": "Specific violation category (e.g., 'Hidden subscription charges', 'Medical claims without FDA disclaimers')",
+      "detection_method": "Detailed scanning method with specific HTML/JS patterns to look for",
       "priority": "HIGH|MEDIUM|LOW",
-      "customer_segments": ["which Crawl5 customers this affects most"]
+      "customer_segments": ["ecommerce", "health", "finance", "software", "saas", "agencies"],
+      "technical_implementation": "Specific code patterns or selectors to implement"
     }
   ],
   "recommended_actions": [
-    "Update Crawl5 scanning engine to detect X",
-    "Add new violation category for Y", 
-    "Modify enforcement scoring for Z"
+    "Specific actionable recommendations with technical details",
+    "Update Crawl5 scanning engine to detect specific HTML pattern: '.hidden-charges'",
+    "Add new violation category for 'Cryptocurrency Investment Scams' with severity INSTANT_SUSPENSION"
+  ],
+  "new_violations_to_detect": [
+    "List specific new violation types that weren't previously covered"
+  ],
+  "enforcement_severity_changes": [
+    "List specific changes in enforcement levels for existing violations"
+  ],
+  "detection_pattern_updates": [
+    "List specific HTML/JS patterns that need to be added to Crawl5 scanning"
   ]
 }
 

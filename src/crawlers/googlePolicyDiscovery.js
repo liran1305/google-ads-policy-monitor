@@ -40,11 +40,23 @@ export class GooglePolicyDiscovery {
     }
 
     this.browser = await chromium.launch(launchOptions);
-    this.page = await this.browser.newPage();
     
-    // Set user agent to avoid blocking
+    // Create new page with US locale and geolocation
+    this.page = await this.browser.newPage({
+      locale: 'en-US',
+      geolocation: { latitude: 37.7749, longitude: -122.4194 }, // San Francisco, CA
+      permissions: ['geolocation']
+    });
+    
+    // Set user agent and headers to force US content
     await this.page.setExtraHTTPHeaders({
-      'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+      'Accept-Language': 'en-US,en;q=0.9',
+      'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+      'Accept-Encoding': 'gzip, deflate, br',
+      'DNT': '1',
+      'Connection': 'keep-alive',
+      'Upgrade-Insecure-Requests': '1'
     });
   }
 
@@ -102,39 +114,126 @@ export class GooglePolicyDiscovery {
     console.log(`📄 Extracting content from: ${url}`);
     
     try {
-      await this.page.goto(url, { waitUntil: 'networkidle' });
+      // Force US locale by adding URL parameters
+      const usUrl = this.forceUSLocale(url);
+      console.log(`🇺🇸 Using US-localized URL: ${usUrl}`);
+      
+      await this.page.goto(usUrl, { waitUntil: 'networkidle' });
+      
+      // Wait for dynamic content to load - Google support pages often load content via JS
+      try {
+        await this.page.waitForSelector('[data-content-root], [role="main"], .article-content', { timeout: 5000 });
+        // Additional wait for any lazy-loaded content
+        await this.page.waitForTimeout(3000);
+        
+        // Scroll to load any lazy content
+        await this.page.evaluate(() => {
+          window.scrollTo(0, document.body.scrollHeight);
+        });
+        await this.page.waitForTimeout(1000);
+        
+        // Expand any collapsed sections (Google uses "zippy" components)
+        await this.page.evaluate(() => {
+          // Click all expandable sections
+          const expandButtons = document.querySelectorAll('[role="button"][aria-expanded="false"], .zippy-header, [data-expandable]');
+          expandButtons.forEach(button => {
+            try {
+              button.click();
+            } catch (e) {}
+          });
+        });
+        await this.page.waitForTimeout(1000);
+        
+      } catch (error) {
+        console.log('⚠️ Content loading timeout, proceeding with available content');
+      }
+      
+      // Get content using Playwright's text extraction for better results
+      let playwrightContent = '';
+      try {
+        playwrightContent = await this.page.evaluate(() => {
+          // Remove navigation and non-content elements
+          const elementsToRemove = document.querySelectorAll('nav, header, footer, .navigation, .breadcrumb, .sidebar, .related-links, .feedback, .help-footer, script, style');
+          elementsToRemove.forEach(el => el.remove());
+          
+          // Get main content area
+          const mainContent = document.querySelector('[data-content-root], [role="main"], .article-content, main') || document.body;
+          return mainContent.innerText || mainContent.textContent || '';
+        });
+      } catch (error) {
+        console.log('⚠️ Playwright content extraction failed, using Cheerio fallback');
+      }
+      
       const content = await this.page.content();
       const $ = cheerio.load(content);
       
       // Extract main content - improved selectors for Google support pages
       const title = $('h1').first().text().trim();
       
-      // Try multiple content selectors for Google support pages
+      // Use Playwright-extracted content if it's substantial, otherwise fallback to Cheerio
       let mainContent = '';
       
-      // Google support pages often use these selectors
-      const contentSelectors = [
-        '[role="main"] .content',
-        '[data-content-root]',
-        '.article-content',
-        '.support-content',
-        'main .content',
-        '[role="main"]',
-        'main',
-        '.main-content'
-      ];
-      
-      for (const selector of contentSelectors) {
-        const content = $(selector).text();
-        if (content && content.length > mainContent.length) {
-          mainContent = content;
+      if (playwrightContent && playwrightContent.length > 2000) {
+        mainContent = playwrightContent;
+        console.log(`✅ Using Playwright-extracted content (${playwrightContent.length} chars)`);
+      } else {
+        console.log(`⚠️ Playwright content too short (${playwrightContent.length} chars), using Cheerio fallback`);
+        
+        // Enhanced selectors for Google support pages - target actual policy content
+        const contentSelectors = [
+          // Primary content areas for Google support
+          '[data-content-root] [jsname]',
+          '[role="main"] [data-content-root]',
+          '.article-wrapper .article-content',
+          '.support-content .content-body',
+          '[data-content-root] .content',
+          '.zippy-content', // Google's expandable content sections
+          '.article-content .content',
+          // Fallback selectors
+          '[role="main"]',
+          'main',
+          '.main-content'
+        ];
+        
+        // Try each selector and get the longest content
+        for (const selector of contentSelectors) {
+          const elements = $(selector);
+          if (elements.length > 0) {
+            let selectorContent = '';
+            elements.each((i, el) => {
+              const elementText = $(el).text();
+              if (elementText.length > 100) { // Only include substantial content
+                selectorContent += elementText + '\n\n';
+              }
+            });
+            
+            if (selectorContent.length > mainContent.length) {
+              mainContent = selectorContent;
+            }
+          }
         }
-      }
-      
-      // Fallback to body but remove script/style content
-      if (!mainContent || mainContent.length < 1000) {
-        $('script, style, nav, header, footer').remove();
-        mainContent = $('body').text();
+        
+        // Enhanced fallback - remove navigation and get body content
+        if (!mainContent || mainContent.length < 2000) {
+          // Remove all non-content elements more aggressively
+          $('script, style, nav, header, footer, .navigation, .breadcrumb, .sidebar, .related-links, .feedback, .help-footer').remove();
+          
+          // Try to get content from specific Google support page structures
+          const bodySelectors = [
+            '[data-content-root]',
+            '[role="main"]',
+            '.content-wrapper',
+            'body'
+          ];
+          
+          for (const selector of bodySelectors) {
+            const content = $(selector).text();
+            if (content && content.length > mainContent.length) {
+              mainContent = content;
+              break;
+            }
+          }
+        }
       }
       
       // Clean up the content
@@ -159,6 +258,26 @@ export class GooglePolicyDiscovery {
     } catch (error) {
       console.error(`❌ Error extracting content from ${url}:`, error);
       return null;
+    }
+  }
+
+  forceUSLocale(url) {
+    try {
+      const urlObj = new URL(url);
+      
+      // Add US locale parameters for Google support pages
+      urlObj.searchParams.set('hl', 'en-US');  // Language
+      urlObj.searchParams.set('gl', 'US');     // Country/Region
+      
+      // For Google Ads policy pages, ensure we're getting US-specific content
+      if (url.includes('support.google.com')) {
+        urlObj.searchParams.set('visit_id', Date.now().toString()); // Cache busting
+      }
+      
+      return urlObj.toString();
+    } catch (error) {
+      console.warn('⚠️ Could not parse URL for localization:', url);
+      return url;
     }
   }
 

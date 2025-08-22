@@ -178,14 +178,21 @@ export class AIAnalyzer {
       }
       console.log('✅ Crawl5 health check passed');
 
-      // Call Crawl5's policy analysis endpoint
+      // Generate the detailed compliance prompt
+      const compliancePrompt = getCrawl5CompliancePrompt(policyData.url, policyData.pageText, policyData.pageHtml || '');
+      console.log('📋 Generated detailed compliance prompt for Crawl5 analysis');
+
+      // Call Crawl5's policy analysis endpoint with the detailed prompt
       const analysisResponse = await fetch(`${this.crawl5ApiUrl2}/api/policy-analysis/analyze`, {
         method: 'POST',
         headers,
         body: JSON.stringify({
           previousContent: '', // No previous content for new policy analysis
           currentContent: policyData.pageText,
-          policyUrl: policyData.url
+          policyUrl: policyData.url,
+          analysisPrompt: compliancePrompt, // Include the detailed compliance prompt
+          analysisType: 'policy_change_analysis',
+          requireDetailedOutput: true // Flag to request detailed JSON response
         }),
         timeout: 30000 // 30 second timeout
       });

@@ -40,7 +40,7 @@ class FirstRunInitializer {
         // Extract content to validate URL
         const currentData = await this.monitor.discovery.extractPolicyContent(url);
         
-        if (!currentData.content || currentData.content.trim().length === 0) {
+        if (!currentData || !currentData.content || currentData.content.trim().length === 0) {
           console.log(`❌ Dead URL detected (no content): ${url}`);
           this.deadUrls.push(url);
           continue;
