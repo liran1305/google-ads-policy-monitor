@@ -208,14 +208,26 @@ class PolicyMonitor {
 
   async cleanup() {
     console.log('\n🧹 Cleaning up...');
-    await this.discovery.close();
     
-    // Close MongoDB connection if using MongoDB
-    if (this.changeDetector.useMongoDb && this.changeDetector.mongoStorage.isConnected) {
-      await this.changeDetector.mongoStorage.disconnect();
+    try {
+      // Close Playwright browser
+      await this.discovery.close();
+      
+      // Close MongoDB connection if using MongoDB
+      if (this.changeDetector.useMongoDb && this.changeDetector.mongoStorage.isConnected) {
+        await this.changeDetector.mongoStorage.disconnect();
+      }
+      
+      console.log('✅ Cleanup completed');
+    } catch (error) {
+      console.error('⚠️ Cleanup error:', error);
     }
     
-    console.log('✅ Cleanup completed');
+    // Force exit to ensure process terminates
+    setTimeout(() => {
+      console.log('🔄 Forcing process exit...');
+      process.exit(0);
+    }, 2000);
   }
 
   delay(ms) {

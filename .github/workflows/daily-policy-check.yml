@@ -40,20 +40,20 @@ jobs:
         
     - name: Run policy monitoring
       env:
-        SMTP_HOST: ${{ secrets.SMTP_HOST || 'smtp.gmail.com' }}
-        SMTP_PORT: ${{ secrets.SMTP_PORT || '587' }}
-        SMTP_USER: ${{ secrets.SMTP_USER || '' }}
-        SMTP_PASS: ${{ secrets.SMTP_PASS || '' }}
-        ALERT_EMAIL: ${{ secrets.ALERT_EMAIL || 'alerts@example.com' }}
-        FROM_EMAIL: ${{ secrets.FROM_EMAIL || 'noreply@example.com' }}
-        GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY || '' }}
-        CRAWL5_API_URL: ${{ secrets.CRAWL5_API_URL || 'http://localhost:4000' }}
-        CRAWL5_API_KEY: ${{ secrets.CRAWL5_API_KEY || '' }}
-        USE_MONGODB: ${{ secrets.USE_MONGODB || 'true' }}
-        MONGODB_URL: ${{ secrets.MONGODB_URL || '' }}
-        MONGODB_DB_NAME: ${{ secrets.MONGODB_DB_NAME || 'policy_monitor' }}
-        USE_FULL_CONFIG: ${{ secrets.USE_FULL_CONFIG || 'true' }}
-      run: npm run monitor
+        SMTP_HOST: ${{ secrets.SMTP_HOST }}
+        SMTP_PORT: ${{ secrets.SMTP_PORT }}
+        SMTP_USER: ${{ secrets.SMTP_USER }}
+        SMTP_PASS: ${{ secrets.SMTP_PASS }}
+        ALERT_EMAIL: ${{ secrets.ALERT_EMAIL }}
+        FROM_EMAIL: ${{ secrets.FROM_EMAIL }}
+        GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        CRAWL5_API_URL: ${{ secrets.CRAWL5_API_URL }}
+        CRAWL5_API_KEY: ${{ secrets.CRAWL5_API_KEY }}
+        USE_MONGODB: ${{ secrets.USE_MONGODB }}
+        MONGODB_URL: ${{ secrets.MONGODB_URL }}
+        MONGODB_DB_NAME: ${{ secrets.MONGODB_DB_NAME }}
+        USE_FULL_CONFIG: ${{ secrets.USE_FULL_CONFIG }}
+      run: timeout 30m npm run monitor
       continue-on-error: true
       
     - name: Upload monitoring report

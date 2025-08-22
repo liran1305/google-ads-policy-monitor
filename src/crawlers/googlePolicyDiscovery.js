@@ -294,7 +294,13 @@ export class GooglePolicyDiscovery {
 
   async close() {
     if (this.browser) {
-      await this.browser.close();
+      console.log('🔄 Closing Playwright browser...');
+      try {
+        await this.browser.close();
+        console.log('✅ Browser closed successfully');
+      } catch (error) {
+        console.error('⚠️ Error closing browser:', error);
+      }
     }
   }
 }
