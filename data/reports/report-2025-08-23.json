@@ -1,0 +1,886 @@
+{
+  "timestamp": "2025-08-23T09:30:47.021Z",
+  "summary": {
+    "totalChecked": 125,
+    "changesDetected": 0,
+    "newPolicies": 0,
+    "modifiedPolicies": 0
+  },
+  "results": [
+    {
+      "url": "https://support.google.com/publisherpolicies/topic/10400854",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/adspolicy/answer/6008942",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/publisherpolicies/answer/10400453",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/adsense/answer/48182",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/admob/answer/6128543",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/adspolicy/answer/6008942",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/adspolicy/answer/176017",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/adspolicy/answer/6014299",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/adspolicy/answer/6016086",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/adspolicy/answer/6015406",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/publisherpolicies/answer/10437537",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/publisherpolicies/answer/10402772",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/publisherpolicies/answer/10522641",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/publisherpolicies/answer/10436971",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/adspolicy/answer/6020955",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/adspolicy/answer/15936857",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/adspolicy/answer/15936667",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/publisherpolicies/answer/11185754",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/adspolicy/answer/6020956",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/adspolicy/answer/6020954",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/adspolicy/answer/15938075",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/publisherpolicies/answer/10502938",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/adspolicy/answer/6023676",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/adspolicy/answer/6023699",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/adspolicy/answer/6012382",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/adspolicy/answer/15132179",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/adspolicy/answer/176031",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/adspolicy/answer/6014595",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/adspolicy/answer/2464998",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/adspolicy/answer/14009787",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/adspolicy/answer/6118",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/adspolicy/answer/6018015",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/adspolicy/answer/6023676",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/adspolicy/answer/6368711",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/adspolicy/answer/176031",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/adspolicy/answer/15595717",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/adspolicy/answer/15597836",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/adspolicy/answer/2423645",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/adspolicy/answer/15598649",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/adspolicy/answer/15598648",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/adspolicy/answer/15597838",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/adspolicy/answer/15596627",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/adspolicy/answer/2464998",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/adspolicy/answer/7645254",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/adspolicy/answer/12390454",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/adspolicy/answer/9520029",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/adspolicy/answer/15332527",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/adspolicy/answer/6014595",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/adspolicy/troubleshooter/9973345",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/adspolicy/answer/10055042",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/adspolicy/answer/10054226",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/adspolicy/contact/election_ads_in",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/adspolicy/answer/10261848",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/adspolicy/answer/6088505",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/adspolicy/answer/6368661",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/adspolicy/answer/16428929",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/adspolicy/answer/94230",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/adspolicy/answer/9481382",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/adspolicy/answer/176108",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/adspolicy/answer/2679940",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/adspolicy/answer/10347108",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/adspolicy/answer/6363786",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/google-ads/answer/7543502",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/google-ads/answer/7323900",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/adspolicy/answer/6021546",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/adspolicy/answer/7187501",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/adspolicy/answer/10922738",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/google-ads/answer/9841640",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/adspolicy/answer/9338593",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/adspolicy/answer/7501932",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/google-ads/answer/1722120",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/google-ads/answer/1704381",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/adspolicy/answer/2615949",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/publisherpolicies/answer/10400453",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/publisherpolicies/answer/10502938",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/publisherpolicies/answer/10437795",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/publisherpolicies/answer/10852414",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/publisherpolicies/answer/10502938",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/adsense/answer/48182",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/adsense/answer/23921",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/adsense/answer/1346295",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/adsense/answer/16737",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/adsense/answer/1348688",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/adsense/answer/9727",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/adsense/answer/1348695",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/admob/answer/6128543",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/admob/answer/2753860",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/admob/answer/3342099",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/admob/answer/7313578",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/merchants/answer/6149970",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/merchants/answer/7052112",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/merchants/answer/9227009",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/merchants/answer/3271956",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/merchants/answer/6150127",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/merchants/answer/6150138",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/merchants/answer/6150244",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/youtube/answer/2375464",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/youtube/answer/2467968",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/youtube/answer/6162278",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/youtube/answer/6168681",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/youtube/answer/9713557",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/youtube/answer/9288567",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/youtube/answer/6066171",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/adspolicy/answer/9703665",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/adspolicy/answer/9872280",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/adspolicy/answer/12499303",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/adspolicy/answer/6020956",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/adspolicy/answer/143465",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/adspolicy/answer/6299717",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/adspolicy/answer/9872280",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/adspolicy/answer/16489352",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/adspolicy/answer/6008942",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/adspolicy/answer/10055042",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/adspolicy/answer/15332527",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/adspolicy/answer/10054226",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/adspolicy/answer/10261848",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/adspolicy/answer/6018017",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/google-ads/answer/10724817",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/google-ads/answer/11546049",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/google-ads/answer/6341296",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/google-ads/answer/9142254",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/google-ads/answer/7684791",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/google-ads/answer/7005917",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/google-ads/answer/2471185",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    },
+    {
+      "url": "https://support.google.com/google-ads/answer/3124536",
+      "isNew": false,
+      "hasChanges": false,
+      "changes": null,
+      "complianceAnalysis": null
+    }
+  ]
+}
