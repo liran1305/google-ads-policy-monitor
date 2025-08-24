@@ -56,27 +56,10 @@ jobs:
       run: timeout 30m npm run monitor
       continue-on-error: true
       
-    - name: Upload monitoring report
-      uses: actions/upload-artifact@v4
-      with:
-        name: policy-monitoring-report-${{ github.run_number }}
-        path: data/reports/
-        retention-days: 30
-      
-    - name: Commit and push snapshots
-      run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
-        git add data/
-        git diff --staged --quiet || git commit -m "📊 Update policy snapshots - $(date)"
-        git push
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        
-    - name: Upload reports as artifacts
+    - name: Upload monitoring reports
       uses: actions/upload-artifact@v4
       if: always()
       with:
-        name: policy-reports
+        name: policy-monitoring-report-${{ github.run_number }}
         path: data/reports/
         retention-days: 30
