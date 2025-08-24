@@ -2,8 +2,8 @@ name: Daily Policy Check
 
 on:
   schedule:
-    # Run daily at 9 AM UTC
-    - cron: '0 9 * * *'
+    # Run daily at 9 AM Israel time (6 AM UTC)
+    - cron: '0 6 * * *'
   workflow_dispatch: # Allow manual trigger
 
 jobs:
