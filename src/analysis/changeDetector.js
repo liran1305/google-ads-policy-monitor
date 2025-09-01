@@ -157,21 +157,30 @@ export class ChangeDetector {
     // Use policy-specific differences for classification
     const policyChanges = semanticDiff.policyWordDiff || semanticDiff.significantChanges;
     
-    if (policyChanges > 15) {
+    // More aggressive filtering - only send emails for meaningful policy changes
+    if (policyChanges > 20) {
       changes.changeType = 'MAJOR_ADDITION';
       changes.description = `Significant policy changes detected (${policyChanges} policy-relevant changes)`;
-    } else if (policyChanges > 8) {
+    } else if (policyChanges > 10) {
       changes.changeType = 'MODERATE_CHANGE';
       changes.description = `Moderate policy updates detected (${policyChanges} policy changes)`;
-    } else if (policyChanges > 3) {
+    } else if (policyChanges > 5) {
       changes.changeType = 'MINOR_MODIFICATION';
       changes.description = `Minor policy modifications detected (${policyChanges} policy changes)`;
     } else {
-      // Very few meaningful changes - but check for critical terms first
+      // Very few changes - be more strict about what constitutes a real policy change
       const hasCriticalTerms = this.containsCriticalPolicyChanges(previous.content, current.content);
       if (hasCriticalTerms) {
-        changes.changeType = 'CRITICAL_MINOR_CHANGE';
-        changes.description = 'Minor changes detected but contain critical policy terms';
+        // Double-check this isn't just navigation changes with critical terms
+        const realPolicyChange = this.hasRealPolicyContentChange(previous.content, current.content);
+        if (realPolicyChange) {
+          changes.changeType = 'CRITICAL_MINOR_CHANGE';
+          changes.description = 'Minor changes detected but contain critical policy terms';
+        } else {
+          changes.changeType = 'STRUCTURAL_WITH_KEYWORDS';
+          changes.description = 'Critical terms found but only in structural/navigation changes';
+          changes.skipNotification = true;
+        }
       } else {
         changes.changeType = 'FORMATTING_ONLY';
         changes.description = 'Only formatting or insignificant changes detected';
@@ -265,16 +274,12 @@ export class ChangeDetector {
     // Extract core policy content by removing all navigation and structural elements
     const extractPolicyCore = (content) => {
       return content
-        // Remove any breadcrumb patterns (anything with > separators)
-        .replace(/[^.!?]*?>\s*[^.!?]*?>\s*[^.!?]*?(?=\s|$)/g, '')
-        .replace(/>\s*[^.!?]*?>\s*[^.!?]*?(?=\s|$)/g, '')
-        .replace(/>\s*[^.!?]*?(?=\s|$)/g, '')
-        // Remove specific navigation patterns
-        .replace(/Help[\s\S]*?(?:Center|Merchant)/gi, '')
-        .replace(/Get to know[\s\S]*?(?:Center|Merchant)/gi, '')
-        .replace(/Business settings[\s\S]*?(?:integrations|products)/gi, '')
-        .replace(/Upload your products[\s\S]*?(?:spec|data)/gi, '')
-        // Remove footer and help elements
+        // Remove any breadcrumb patterns (anything with > separators) - DYNAMIC
+        .replace(/(?:^|\s)[^.!?]*?>\s*[^.!?]*?>\s*[^.!?]*?(?=\s|$)/g, '')
+        .replace(/(?:^|\s)[^.!?]*?>\s*[^.!?]*?(?=\s|$)/g, '')
+        // Remove common navigation elements - GENERIC patterns
+        .replace(/(?:Help|Get to know|Business settings|Upload|Add products|Maintain|Market|Understand|Troubleshoot)[\s\w]*?(?:Center|Next|products|integrations|performance|data|campaigns)/gi, '')
+        // Remove footer and help elements - UNIVERSAL
         .replace(/Skip to main content/gi, '')
         .replace(/Give feedback[\s\S]*?article/gi, '')
         .replace(/Was this helpful\?/gi, '')
@@ -283,6 +288,10 @@ export class ChangeDetector {
         .replace(/Get answers from community members/gi, '')
         .replace(/Contact us/gi, '')
         .replace(/Tell us more[\s\S]*?there/gi, '')
+        // Remove common page structure elements
+        .replace(/Choose a section to give[\s\S]*?feedback/gi, '')
+        .replace(/For subtitles in your language[\s\S]*?language/gi, '')
+        .replace(/Select the settings icon[\s\S]*?language/gi, '')
         // Clean up whitespace and normalize
         .replace(/\s+/g, ' ')
         .trim()
@@ -291,6 +300,11 @@ export class ChangeDetector {
 
     const prevCore = extractPolicyCore(previousContent);
     const currCore = extractPolicyCore(currentContent);
+    
+    // If one is empty after normalization, it's likely all navigation
+    if (!prevCore || !currCore) {
+      return true;
+    }
     
     // Calculate similarity ratio using word overlap
     const prevWords = new Set(prevCore.split(/\s+/).filter(w => w.length > 2));
@@ -301,8 +315,8 @@ export class ChangeDetector {
     
     const similarity = union.size > 0 ? intersection.size / union.size : 0;
     
-    // If core policy content is very similar (>85%), it's only structural changes
-    return similarity > 0.85;
+    // More aggressive filtering - if core content is >90% similar, it's structural only
+    return similarity > 0.90;
   }
 
   calculatePolicySpecificDifference(text1, text2) {
@@ -386,32 +400,102 @@ export class ChangeDetector {
       'gambling', 'healthcare', 'pharmaceutical', 'medical'
     ];
 
-    // Get differences between content
-    const prevSentences = previousContent.toLowerCase().split(/[.!?]+/);
-    const currSentences = currentContent.toLowerCase().split(/[.!?]+/);
+    // Extract only policy-relevant sentences (not navigation)
+    const extractPolicySentences = (content) => {
+      return content.toLowerCase()
+        // Remove navigation patterns first
+        .replace(/(?:^|\s)[^.!?]*?>\s*[^.!?]*?(?:\s*>\s*[^.!?]*?)*(?=\s|$)/g, '')
+        // Remove help elements
+        .replace(/(?:help|get to know|business settings|upload|skip to main|give feedback|was this helpful|need more help|post to|contact us)[\s\S]*?(?:\.|$)/gi, '')
+        .split(/[.!?]+/)
+        .filter(sentence => {
+          const s = sentence.trim();
+          return s.length > 20 && 
+                 (s.includes('policy') || s.includes('ads') || s.includes('content') ||
+                  s.includes('required') || s.includes('prohibited') || s.includes('must') ||
+                  s.includes('compliance') || s.includes('violation'));
+        });
+    };
+
+    const prevPolicySentences = extractPolicySentences(previousContent);
+    const currPolicySentences = extractPolicySentences(currentContent);
     
-    // Find new sentences
-    const newSentences = currSentences.filter(sentence => 
-      sentence.trim().length > 20 && 
-      !prevSentences.some(prevSent => 
+    // Find new policy sentences
+    const newSentences = currPolicySentences.filter(sentence => 
+      !prevPolicySentences.some(prevSent => 
         this.sentenceSimilarity(sentence, prevSent) > 0.8
       )
     );
     
-    // Find removed sentences
-    const removedSentences = prevSentences.filter(sentence => 
-      sentence.trim().length > 20 && 
-      !currSentences.some(currSent => 
+    // Find removed policy sentences
+    const removedSentences = prevPolicySentences.filter(sentence => 
+      !currPolicySentences.some(currSent => 
         this.sentenceSimilarity(sentence, currSent) > 0.8
       )
     );
     
-    // Check if any new or removed sentences contain critical terms
+    // Check if any new or removed POLICY sentences contain critical terms
     const allChangedSentences = [...newSentences, ...removedSentences];
     
     return allChangedSentences.some(sentence => 
       criticalTerms.some(term => sentence.includes(term))
     );
+  }
+
+  hasRealPolicyContentChange(previousContent, currentContent) {
+    // Extract only the actual policy content, removing ALL navigation/structural elements
+    const extractPurePolicyContent = (content) => {
+      return content
+        // Remove ALL navigation patterns
+        .replace(/(?:^|\s)[^.!?]*?>\s*[^.!?]*?(?:\s*>\s*[^.!?]*?)*(?=\s|$)/g, '')
+        // Remove ALL help page elements
+        .replace(/(?:Help|Get to know|Business settings|Upload|Add products|Maintain|Market|Understand|Troubleshoot|Skip to main|Give feedback|Was this helpful|Need more help|Post to|Contact us|Tell us more)[\s\S]*?(?:\.|$)/gi, '')
+        // Remove common page structure
+        .replace(/Choose a section[\s\S]*?feedback/gi, '')
+        .replace(/For subtitles[\s\S]*?language/gi, '')
+        .replace(/Select the settings[\s\S]*?language/gi, '')
+        // Keep only sentences that contain policy-relevant content
+        .split(/[.!?]+/)
+        .filter(sentence => {
+          const s = sentence.toLowerCase().trim();
+          return s.length > 15 && 
+                 (s.includes('policy') || s.includes('required') || s.includes('prohibited') || 
+                  s.includes('must') || s.includes('cannot') || s.includes('shall') ||
+                  s.includes('effective') || s.includes('starting') || s.includes('ending') ||
+                  s.includes('compliance') || s.includes('violation') || s.includes('restriction') ||
+                  s.includes('fda') || s.includes('approval') || s.includes('pharmaceutical') ||
+                  s.includes('dangerous') || s.includes('ads'));
+        })
+        .join('. ')
+        .replace(/\s+/g, ' ')
+        .trim()
+        .toLowerCase();
+    };
+
+    const prevPolicyContent = extractPurePolicyContent(previousContent);
+    const currPolicyContent = extractPurePolicyContent(currentContent);
+    
+    // If no policy content found in either, it's not a real policy change
+    if (!prevPolicyContent && !currPolicyContent) {
+      return false;
+    }
+    
+    // If one has policy content and the other doesn't, it's a real change
+    if (!prevPolicyContent || !currPolicyContent) {
+      return true;
+    }
+    
+    // Calculate similarity of pure policy content
+    const prevWords = new Set(prevPolicyContent.split(/\s+/).filter(w => w.length > 3));
+    const currWords = new Set(currPolicyContent.split(/\s+/).filter(w => w.length > 3));
+    
+    const intersection = new Set([...prevWords].filter(w => currWords.has(w)));
+    const union = new Set([...prevWords, ...currWords]);
+    
+    const similarity = union.size > 0 ? intersection.size / union.size : 0;
+    
+    // If policy content is <80% similar, there's a real policy change
+    return similarity < 0.80;
   }
 
   async getAllSnapshots() {
